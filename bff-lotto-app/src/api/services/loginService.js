@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 exports.forwardToBackend = async (requestData) => {
-  
-  const response = await axios.post('http://localhost:8080/lotto-api/login', requestData, {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const response = await axios.post(`${apiUrl}/lotto-api/login`, requestData, {
     headers: { 'Content-Type': 'application/json' }
   });
   return response.data;
