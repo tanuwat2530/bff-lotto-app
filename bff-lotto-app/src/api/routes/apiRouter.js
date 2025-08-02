@@ -8,8 +8,8 @@ const PayoutController = require('../controllers/payoutController');
 
   router.post('/login', LoginController.loginUser);
   router.post('/register', RegisterController.registerUser);
-  router.post('/gateway/payin', PayinController.deposit);
-  router.post('/gateway/payout', PayoutController.withdraw);
+  router.post('/payin', PayinController.deposit);
+  router.post('/payout', PayoutController.withdraw);
 
 
 module.exports = router;
