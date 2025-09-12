@@ -8,6 +8,7 @@ const CreditController = require('../controllers/creditBalanceController');
 const BetHistoryController = require('../controllers/betHistoryController');
 const MemberHistoryController = require('../controllers/memberHistoryController');
 const OrderNotiController = require('../controllers/orderNotiController');
+const QrPromtpayController = require('../controllers/qrPromtpayController');
 
 
   router.post('/login', LoginController.loginUser);
@@ -20,6 +21,7 @@ const OrderNotiController = require('../controllers/orderNotiController');
   router.post('/payin', PayinController.deposit);
   router.post('/payout', PayoutController.withdraw);
   router.post('/order-noti', OrderNotiController.noti);
+  router.post('/promtpay', QrPromtpayController.promtpay);
 
 
 
