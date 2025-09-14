@@ -29,17 +29,31 @@ exports.sendMessage = async (requestData) => {
   const promtpay_id = requestData.promtpay_id; 
   const promtpay_name = requestData.promtpay_name;
   const bank_provider = requestData.bank_provider;
+  //const root_url = requestData.root_url;
+  const root_url = "https://test-domain.net";
   
   // ➡️ Encode the qr_image string to MD5
 const md5_qr_image = crypto.createHash('md5').update(qr_image).digest('hex');
 
+const noti_message = `🔔 🔔 🔔 🔔 🔔  หวยพระนคร 🔔 🔔 🔔 🔔 🔔 
+ 
+ 📣 สมาชิกหมายเลข : ${member_id} 
+ 📣 โอนเงิน : ${amount} บาท 
+ 📣 เข้าพร้อมเพย์ : ${promtpay_id} 
+ 📣 ชื่อบัญชี : ${promtpay_name} 
+ 📣 ธนาคาร : ${bank_provider} 
+ รหัสอ้างอิง : ${md5_qr_image} 
+ 
+ ⚠️ ⚠️ ⚠️ เข็คยอดโอน ก่อนเพิ่มเครดิต ⚠️ ⚠️ ⚠️ 
+ 
+ [✅ ✅ ✅ ✅ ✅ เพิ่มเครดิต ✅ ✅ ✅ ✅ ✅](${root_url}/add-credit?member_id=${member_id}&credit=${amount}&secret_sign=secret-frontend&order_id=${md5_qr_image})`;
 
 
   try {
     // Make the POST request to the Telegram API
     const response = await axios.post(telegramApiUrl, {
       chat_id: CHAT_ID,
-      "text": "🔔 🔔 🔔 🔔 🔔  หวยพระนคร 🔔 🔔 🔔 🔔 🔔 \n\n 📣 สมาชิกหมายเลข : "+member_id+" \n 📣 โอนเงิน : "+amount+" บาท \n 📣 เข้าพร้อมเพย์ : "+promtpay_id+" \n 📣 ชื่อบัญชี : "+promtpay_name+" \n 📣 ธนาคาร : "+bank_provider+" \n รหัสอ้างอิง : "+md5_qr_image+" \n\n ⚠️ ⚠️ ⚠️ เข็คยอดโอน ก่อนเพิ่มเครดิต ⚠️ ⚠️ ⚠️ \n\n [✅ ✅ ✅ ✅ ✅ เพิ่มเครดิต ✅ ✅ ✅ ✅ ✅](https://www.google.com/)",
+      "text": noti_message , 
       parse_mode: "MarkdownV2"
     });
 
