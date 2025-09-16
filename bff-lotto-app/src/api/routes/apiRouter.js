@@ -24,8 +24,9 @@ const TelegramController = require('../controllers/telegramController');
   router.post('/payout', PayoutController.withdraw);
   router.post('/order-noti', OrderNotiController.noti);
   router.post('/promtpay', QrPromtpayController.promtpay);
-    router.post('/promtpay-credit', PromtpayCreditController.addCredit);
-    router.post('/telegram', TelegramController.telegramHelper);
+  router.post('/promtpay-credit', PromtpayCreditController.addCredit);
+  router.post('/telegram-deposit-noti', TelegramController.telegramDepositNoti);
+  router.post('/telegram-withdraw-noti', TelegramController.telegramWithdrawtNoti);
 
 
 
