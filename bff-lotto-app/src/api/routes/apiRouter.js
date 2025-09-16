@@ -10,6 +10,7 @@ const MemberHistoryController = require('../controllers/memberHistoryController'
 const OrderNotiController = require('../controllers/orderNotiController');
 const QrPromtpayController = require('../controllers/qrPromtpayController');
 const PromtpayCreditController = require('../controllers/promtpayCreditController');
+const WithdrawCreditController = require('../controllers/withdrawCreditController');
 const TelegramController = require('../controllers/telegramController');
 
 
@@ -25,8 +26,10 @@ const TelegramController = require('../controllers/telegramController');
   router.post('/order-noti', OrderNotiController.noti);
   router.post('/promtpay', QrPromtpayController.promtpay);
   router.post('/promtpay-credit', PromtpayCreditController.addCredit);
+  router.post('/withdraw-credit', WithdrawCreditController.withdrawCredit);
   router.post('/telegram-deposit-noti', TelegramController.telegramDepositNoti);
   router.post('/telegram-withdraw-noti', TelegramController.telegramWithdrawtNoti);
+
 
 
 
